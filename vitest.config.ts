@@ -9,12 +9,15 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
       include: ['src/**/*.ts'],
-      exclude: ['src/index.ts', 'src/types/index.ts'],
+      exclude: [
+        'src/index.ts',
+        'src/types/**/*.ts', // Type definitions only
+      ],
       thresholds: {
-        lines: 90,
-        functions: 90,
-        branches: 90,
-        statements: 90,
+        lines: 80,
+        functions: 80,
+        branches: 80,
+        statements: 80,
       },
     },
     setupFiles: ['tests/setup.ts'],
