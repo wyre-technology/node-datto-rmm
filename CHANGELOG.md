@@ -1,3 +1,15 @@
+# 1.0.0 (2026-02-05)
+
+
+### Bug Fixes
+
+* Add semantic-release plugins as devDependencies ([f2d1138](https://github.com/asachs01/node-datto-rmm/commit/f2d1138f039524d12a38be783654b8b5cfe43c81))
+
+
+### Features
+
+* Initial project structure and core implementation ([6a200c8](https://github.com/asachs01/node-datto-rmm/commit/6a200c8bee492599b7d43ab6fc45067d33560077))
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
