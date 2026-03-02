@@ -1,3 +1,11 @@
+## [1.0.1](https://github.com/wyre-technology/node-datto-rmm/compare/v1.0.0...v1.0.1) (2026-03-02)
+
+
+### Bug Fixes
+
+* require Node 22+ (semantic-release@25 compatibility) ([0884c17](https://github.com/wyre-technology/node-datto-rmm/commit/0884c17016342b041fc0165e9a29bc1efe18e553))
+* require Node 22+ (semantic-release@25 compatibility) ([f9508a5](https://github.com/wyre-technology/node-datto-rmm/commit/f9508a5f592236f4495f999e06738cd62f0f6815))
+
 # 1.0.0 (2026-02-05)
 
 
