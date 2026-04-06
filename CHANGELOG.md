@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/wyre-technology/node-datto-rmm/compare/v1.0.1...v1.0.2) (2026-04-06)
+
+
+### Bug Fixes
+
+* defensively unwrap API responses to handle direct returns ([62fa082](https://github.com/wyre-technology/node-datto-rmm/commit/62fa082dc8ccaaea0cb4e6fcacdc36c4c3353192)), closes [wyre-technology/msp-claude-plugins#43](https://github.com/wyre-technology/msp-claude-plugins/issues/43)
+
 ## [1.0.1](https://github.com/wyre-technology/node-datto-rmm/compare/v1.0.0...v1.0.1) (2026-03-02)
 
 
