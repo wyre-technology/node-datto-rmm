@@ -4,7 +4,8 @@
 
 import type { HttpClient } from '../http.js';
 import type { ResolvedConfig } from '../config.js';
-import type { Filter, DefaultFiltersResponse, CustomFiltersResponse } from '../types/filters.js';
+import type { Filter } from '../types/filters.js';
+import { unwrap } from '../unwrap.js';
 
 /**
  * Filters resource operations
@@ -20,15 +21,15 @@ export class FiltersResource {
    * Get default filters
    */
   async defaults(): Promise<Filter[]> {
-    const response = await this.httpClient.request<DefaultFiltersResponse>('/filter/default-filters');
-    return response.filters;
+    const response = await this.httpClient.request<Record<string, unknown>>('/filter/default-filters');
+    return unwrap<Filter[]>(response, 'filters');
   }
 
   /**
    * Get custom filters
    */
   async custom(): Promise<Filter[]> {
-    const response = await this.httpClient.request<CustomFiltersResponse>('/filter/custom-filters');
-    return response.filters;
+    const response = await this.httpClient.request<Record<string, unknown>>('/filter/custom-filters');
+    return unwrap<Filter[]>(response, 'filters');
   }
 }

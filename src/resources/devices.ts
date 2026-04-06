@@ -12,12 +12,12 @@ import type {
   QuickJobResponse,
   UdfUpdateRequest,
   WarrantyUpdateRequest,
-  DeviceResponse,
   DeviceAlertsResponse,
   DeviceMoveResponse,
   UdfUpdateResponse,
   WarrantyUpdateResponse,
 } from '../types/devices.js';
+import { unwrap } from '../unwrap.js';
 import type { Alert } from '../types/alerts.js';
 
 /**
@@ -36,24 +36,24 @@ export class DevicesResource {
    * Get a device by UID
    */
   async get(deviceUid: string): Promise<Device> {
-    const response = await this.httpClient.request<DeviceResponse>(`/device/${deviceUid}`);
-    return response.device;
+    const response = await this.httpClient.request<Record<string, unknown>>(`/device/${deviceUid}`);
+    return unwrap<Device>(response, 'device');
   }
 
   /**
    * Get a device by numeric ID
    */
   async getById(deviceId: number): Promise<Device> {
-    const response = await this.httpClient.request<DeviceResponse>(`/device/id/${deviceId}`);
-    return response.device;
+    const response = await this.httpClient.request<Record<string, unknown>>(`/device/id/${deviceId}`);
+    return unwrap<Device>(response, 'device');
   }
 
   /**
    * Get a device by MAC address
    */
   async getByMac(macAddress: string): Promise<Device> {
-    const response = await this.httpClient.request<DeviceResponse>(`/device/macAddress/${macAddress}`);
-    return response.device;
+    const response = await this.httpClient.request<Record<string, unknown>>(`/device/macAddress/${macAddress}`);
+    return unwrap<Device>(response, 'device');
   }
 
   /**

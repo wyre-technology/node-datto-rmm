@@ -8,10 +8,8 @@ import type {
   SystemStatus,
   RequestRate,
   PaginationInfo,
-  SystemStatusResponse,
-  RequestRateResponse,
-  PaginationInfoResponse,
 } from '../types/system.js';
+import { unwrap } from '../unwrap.js';
 
 /**
  * System resource operations
@@ -27,23 +25,23 @@ export class SystemResource {
    * Get system status
    */
   async status(): Promise<SystemStatus> {
-    const response = await this.httpClient.request<SystemStatusResponse>('/system/status');
-    return response.status;
+    const response = await this.httpClient.request<Record<string, unknown>>('/system/status');
+    return unwrap<SystemStatus>(response, 'status');
   }
 
   /**
    * Get current request rate (rate limit status)
    */
   async requestRate(): Promise<RequestRate> {
-    const response = await this.httpClient.request<RequestRateResponse>('/system/request_rate');
-    return response.requestRate;
+    const response = await this.httpClient.request<Record<string, unknown>>('/system/request_rate');
+    return unwrap<RequestRate>(response, 'requestRate');
   }
 
   /**
    * Get pagination settings
    */
   async pagination(): Promise<PaginationInfo> {
-    const response = await this.httpClient.request<PaginationInfoResponse>('/system/pagination');
-    return response.pagination;
+    const response = await this.httpClient.request<Record<string, unknown>>('/system/pagination');
+    return unwrap<PaginationInfo>(response, 'pagination');
   }
 }

@@ -8,12 +8,8 @@ import type {
   Job,
   JobResult,
   JobComponent,
-  JobResponse,
-  JobResultsResponse,
-  JobStdoutResponse,
-  JobStderrResponse,
-  JobComponentsResponse,
 } from '../types/jobs.js';
+import { unwrap } from '../unwrap.js';
 
 /**
  * Jobs resource operations
@@ -29,39 +25,39 @@ export class JobsResource {
    * Get job details by UID
    */
   async get(jobUid: string): Promise<Job> {
-    const response = await this.httpClient.request<JobResponse>(`/job/${jobUid}`);
-    return response.job;
+    const response = await this.httpClient.request<Record<string, unknown>>(`/job/${jobUid}`);
+    return unwrap<Job>(response, 'job');
   }
 
   /**
    * Get job results for a specific device
    */
   async results(jobUid: string, deviceUid: string): Promise<JobResult> {
-    const response = await this.httpClient.request<JobResultsResponse>(`/job/${jobUid}/results/${deviceUid}`);
-    return response.result;
+    const response = await this.httpClient.request<Record<string, unknown>>(`/job/${jobUid}/results/${deviceUid}`);
+    return unwrap<JobResult>(response, 'result');
   }
 
   /**
    * Get job stdout for a specific device
    */
   async stdout(jobUid: string, deviceUid: string): Promise<string> {
-    const response = await this.httpClient.request<JobStdoutResponse>(`/job/${jobUid}/results/${deviceUid}/stdout`);
-    return response.stdout;
+    const response = await this.httpClient.request<Record<string, unknown>>(`/job/${jobUid}/results/${deviceUid}/stdout`);
+    return unwrap<string>(response, 'stdout');
   }
 
   /**
    * Get job stderr for a specific device
    */
   async stderr(jobUid: string, deviceUid: string): Promise<string> {
-    const response = await this.httpClient.request<JobStderrResponse>(`/job/${jobUid}/results/${deviceUid}/stderr`);
-    return response.stderr;
+    const response = await this.httpClient.request<Record<string, unknown>>(`/job/${jobUid}/results/${deviceUid}/stderr`);
+    return unwrap<string>(response, 'stderr');
   }
 
   /**
    * Get job components
    */
   async components(jobUid: string): Promise<JobComponent[]> {
-    const response = await this.httpClient.request<JobComponentsResponse>(`/job/${jobUid}/components`);
-    return response.components;
+    const response = await this.httpClient.request<Record<string, unknown>>(`/job/${jobUid}/components`);
+    return unwrap<JobComponent[]>(response, 'components');
   }
 }

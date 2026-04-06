@@ -13,20 +13,15 @@ import type {
   SiteSettings,
   SiteProxySettings,
   NetworkInterface,
-  SiteResponse,
   SiteDevicesResponse,
   SiteNetworkInterfacesResponse,
-  SiteSettingsResponse,
-  SiteFiltersResponse,
   SiteAlertsResponse,
-  SiteVariablesResponse,
-  SiteCreatedResponse,
-  SiteUpdatedResponse,
 } from '../types/sites.js';
+import { unwrap } from '../unwrap.js';
 import type { Device } from '../types/devices.js';
 import type { Alert } from '../types/alerts.js';
 import type { Filter } from '../types/filters.js';
-import type { Variable, VariableCreateRequest, VariableUpdateRequest, VariableCreatedResponse, VariableUpdatedResponse, VariableDeletedResponse } from '../types/variables.js';
+import type { Variable, VariableCreateRequest, VariableUpdateRequest, VariableDeletedResponse } from '../types/variables.js';
 
 /**
  * Sites resource operations
@@ -44,30 +39,30 @@ export class SitesResource {
    * Create a new site
    */
   async create(data: SiteCreateRequest): Promise<Site> {
-    const response = await this.httpClient.request<SiteCreatedResponse>('/site', {
+    const response = await this.httpClient.request<Record<string, unknown>>('/site', {
       method: 'PUT',
       body: data,
     });
-    return response.site;
+    return unwrap<Site>(response, 'site');
   }
 
   /**
    * Get a site by UID
    */
   async get(siteUid: string): Promise<Site> {
-    const response = await this.httpClient.request<SiteResponse>(`/site/${siteUid}`);
-    return response.site;
+    const response = await this.httpClient.request<Record<string, unknown>>(`/site/${siteUid}`);
+    return unwrap<Site>(response, 'site');
   }
 
   /**
    * Update a site
    */
   async update(siteUid: string, data: SiteUpdateRequest): Promise<Site> {
-    const response = await this.httpClient.request<SiteUpdatedResponse>(`/site/${siteUid}`, {
+    const response = await this.httpClient.request<Record<string, unknown>>(`/site/${siteUid}`, {
       method: 'POST',
       body: data,
     });
-    return response.site;
+    return unwrap<Site>(response, 'site');
   }
 
   /**
@@ -118,16 +113,16 @@ export class SitesResource {
    * Get site settings
    */
   async settings(siteUid: string): Promise<SiteSettings> {
-    const response = await this.httpClient.request<SiteSettingsResponse>(`/site/${siteUid}/settings`);
-    return response.settings;
+    const response = await this.httpClient.request<Record<string, unknown>>(`/site/${siteUid}/settings`);
+    return unwrap<SiteSettings>(response, 'settings');
   }
 
   /**
    * Get site filters
    */
   async filters(siteUid: string): Promise<Filter[]> {
-    const response = await this.httpClient.request<SiteFiltersResponse>(`/site/${siteUid}/filters`);
-    return response.filters;
+    const response = await this.httpClient.request<Record<string, unknown>>(`/site/${siteUid}/filters`);
+    return unwrap<Filter[]>(response, 'filters');
   }
 
   /**
@@ -178,30 +173,30 @@ export class SitesResource {
    * List site variables
    */
   async variables(siteUid: string): Promise<Variable[]> {
-    const response = await this.httpClient.request<SiteVariablesResponse>(`/site/${siteUid}/variables`);
-    return response.variables;
+    const response = await this.httpClient.request<Record<string, unknown>>(`/site/${siteUid}/variables`);
+    return unwrap<Variable[]>(response, 'variables');
   }
 
   /**
    * Create a site variable
    */
   async createVariable(siteUid: string, data: VariableCreateRequest): Promise<Variable> {
-    const response = await this.httpClient.request<VariableCreatedResponse>(`/site/${siteUid}/variable`, {
+    const response = await this.httpClient.request<Record<string, unknown>>(`/site/${siteUid}/variable`, {
       method: 'PUT',
       body: data,
     });
-    return response.variable;
+    return unwrap<Variable>(response, 'variable');
   }
 
   /**
    * Update a site variable
    */
   async updateVariable(siteUid: string, variableId: string, data: VariableUpdateRequest): Promise<Variable> {
-    const response = await this.httpClient.request<VariableUpdatedResponse>(`/site/${siteUid}/variable/${variableId}`, {
+    const response = await this.httpClient.request<Record<string, unknown>>(`/site/${siteUid}/variable/${variableId}`, {
       method: 'POST',
       body: data,
     });
-    return response.variable;
+    return unwrap<Variable>(response, 'variable');
   }
 
   /**

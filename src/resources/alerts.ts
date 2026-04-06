@@ -6,11 +6,11 @@ import type { HttpClient } from '../http.js';
 import type { ResolvedConfig } from '../config.js';
 import type {
   Alert,
-  AlertResponse,
   AlertResolveResponse,
   AlertMuteResponse,
   AlertUnmuteResponse,
 } from '../types/alerts.js';
+import { unwrap } from '../unwrap.js';
 
 /**
  * Alerts resource operations
@@ -26,8 +26,8 @@ export class AlertsResource {
    * Get an alert by UID
    */
   async get(alertUid: string): Promise<Alert> {
-    const response = await this.httpClient.request<AlertResponse>(`/alert/${alertUid}`);
-    return response.alert;
+    const response = await this.httpClient.request<Record<string, unknown>>(`/alert/${alertUid}`);
+    return unwrap<Alert>(response, 'alert');
   }
 
   /**

@@ -10,19 +10,18 @@ import type {
   Account,
   Component,
   DnetSiteMapping,
-  AccountResponse,
   AccountUsersResponse,
   AccountSitesResponse,
   AccountDevicesResponse,
   AccountComponentsResponse,
   AccountAlertsResponse,
-  AccountVariablesResponse,
   DnetSiteMappingsResponse,
 } from '../types/account.js';
+import { unwrap } from '../unwrap.js';
 import type { Site } from '../types/sites.js';
 import type { Device } from '../types/devices.js';
 import type { Alert } from '../types/alerts.js';
-import type { Variable, VariableCreateRequest, VariableUpdateRequest, VariableCreatedResponse, VariableUpdatedResponse, VariableDeletedResponse } from '../types/variables.js';
+import type { Variable, VariableCreateRequest, VariableUpdateRequest, VariableDeletedResponse } from '../types/variables.js';
 
 /**
  * Account resource operations
@@ -40,8 +39,8 @@ export class AccountResource {
    * Get account information
    */
   async get(): Promise<Account> {
-    const response = await this.httpClient.request<AccountResponse>('/account');
-    return response.account;
+    const response = await this.httpClient.request<Record<string, unknown>>('/account');
+    return unwrap<Account>(response, 'account');
   }
 
   /**
@@ -189,30 +188,30 @@ export class AccountResource {
    * List account variables
    */
   async variables(): Promise<Variable[]> {
-    const response = await this.httpClient.request<AccountVariablesResponse>('/account/variables');
-    return response.variables;
+    const response = await this.httpClient.request<Record<string, unknown>>('/account/variables');
+    return unwrap<Variable[]>(response, 'variables');
   }
 
   /**
    * Create an account variable
    */
   async createVariable(data: VariableCreateRequest): Promise<Variable> {
-    const response = await this.httpClient.request<VariableCreatedResponse>('/account/variable', {
+    const response = await this.httpClient.request<Record<string, unknown>>('/account/variable', {
       method: 'PUT',
       body: data,
     });
-    return response.variable;
+    return unwrap<Variable>(response, 'variable');
   }
 
   /**
    * Update an account variable
    */
   async updateVariable(variableId: string, data: VariableUpdateRequest): Promise<Variable> {
-    const response = await this.httpClient.request<VariableUpdatedResponse>(`/account/variable/${variableId}`, {
+    const response = await this.httpClient.request<Record<string, unknown>>(`/account/variable/${variableId}`, {
       method: 'POST',
       body: data,
     });
-    return response.variable;
+    return unwrap<Variable>(response, 'variable');
   }
 
   /**
