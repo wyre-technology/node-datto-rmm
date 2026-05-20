@@ -2,7 +2,7 @@
  * Authentication tests
  */
 
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { http, HttpResponse } from 'msw';
 import { server } from '../mocks/server.js';
 import { AuthManager } from '../../src/auth.js';

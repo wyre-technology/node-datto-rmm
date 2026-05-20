@@ -2,7 +2,7 @@
  * Rate limiter tests
  */
 
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { RateLimiter } from '../../src/rate-limiter.js';
 import { DattoRmmIpBlockedError } from '../../src/errors.js';
 import type { RateLimitConfig } from '../../src/config.js';
