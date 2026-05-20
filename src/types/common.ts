@@ -21,7 +21,7 @@ export interface PageDetails {
  */
 export interface PaginatedResponse<T> {
   pageDetails: PageDetails;
-  [key: string]: T[] | PageDetails | unknown;
+  [key: string]: T[] | PageDetails;
 }
 
 /**

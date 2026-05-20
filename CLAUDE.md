@@ -17,7 +17,7 @@ Comprehensive, fully-typed Node.js/TypeScript library for the Datto RMM API v2.
 
 ## Technical Stack
 
-- Node.js >= 18.0.0
+- Node.js >= 22.0.0
 - TypeScript >= 5.0
 - ESM with CJS compatibility
 - HTTP client: undici (Node built-in fetch)
