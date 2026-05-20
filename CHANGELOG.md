@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/wyre-technology/node-datto-rmm/compare/v1.0.2...v1.0.3) (2026-05-20)
+
+
+### Bug Fixes
+
+* repair broken package exports and standardize on Node 22 ([#2](https://github.com/wyre-technology/node-datto-rmm/issues/2)) ([6c10201](https://github.com/wyre-technology/node-datto-rmm/commit/6c10201da1a5afc03994aac0f57666928d901df3))
+
 ## [1.0.2](https://github.com/wyre-technology/node-datto-rmm/compare/v1.0.1...v1.0.2) (2026-04-06)
 
 
