@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/wyre-technology/node-datto-rmm/compare/v1.0.3...v1.0.4) (2026-06-08)
+
+
+### Bug Fixes
+
+* **security:** bump vitest + @vitest/coverage-v8 1.x -> 3.2.6 ([#25](https://github.com/wyre-technology/node-datto-rmm/issues/25)) ([b2a431c](https://github.com/wyre-technology/node-datto-rmm/commit/b2a431c0642c2ad1403e5f720914ed729480b8fe))
+
 ## [1.0.3](https://github.com/wyre-technology/node-datto-rmm/compare/v1.0.2...v1.0.3) (2026-05-20)
 
 
