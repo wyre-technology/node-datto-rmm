@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/wyre-technology/node-datto-rmm/compare/v1.0.4...v1.0.5) (2026-07-18)
+
+
+### Bug Fixes
+
+* read HTTP response bodies exactly once ([#44](https://github.com/wyre-technology/node-datto-rmm/issues/44)) ([d22d392](https://github.com/wyre-technology/node-datto-rmm/commit/d22d392b6cc48b3c5269eaa6159f89f66a956235))
+
 ## [1.0.4](https://github.com/wyre-technology/node-datto-rmm/compare/v1.0.3...v1.0.4) (2026-06-08)
 
 
