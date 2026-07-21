@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/wyre-technology/node-datto-rmm/compare/v1.0.5...v1.0.6) (2026-07-21)
+
+
+### Bug Fixes
+
+* **deps:** pin typescript back to ^5.9.3, main is broken on 7.0.2 ([#49](https://github.com/wyre-technology/node-datto-rmm/issues/49)) ([4ab6573](https://github.com/wyre-technology/node-datto-rmm/commit/4ab65736836121665fb78302816d666b81879acc)), closes [#46](https://github.com/wyre-technology/node-datto-rmm/issues/46) [45/#46](https://github.com/wyre-technology/node-datto-rmm/issues/46) [#46](https://github.com/wyre-technology/node-datto-rmm/issues/46) [#43](https://github.com/wyre-technology/node-datto-rmm/issues/43)
+
 ## [1.0.5](https://github.com/wyre-technology/node-datto-rmm/compare/v1.0.4...v1.0.5) (2026-07-18)
 
 
